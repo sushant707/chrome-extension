@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tab Title Extension</title>
-    <link rel="stylesheet" type="text/css" href="popup.css">
+  <title>LinkedIn Data Scraper</title>
+  <link rel="stylesheet" type="text/css" href="popup.css">
 </head>
 <body>
-    <button id="getTitleButton">Get Tab Title</button>
-    <div id="titleDisplay"></div>
-    <script src="popup.js"></script>
+  <div class="container">
+    <textarea id="links" placeholder="Enter LinkedIn profile links here, one per line"></textarea>
+    <button id="save">Save Links</button>
+    <button id="start">Start</button>
+  </div>
+  <script src="popup.js"></script>
 </body>
 </html>
