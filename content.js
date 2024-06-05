@@ -1,28 +1,23 @@
+// Function to extract profile data from the LinkedIn profile page
 const extractProfileData = () => {
-  const name = document.querySelector('.top-card-layout__title').innerText;
-  const location = document.querySelector('.top-card__subline-item').innerText;
-  const about = document.querySelector('.core-section-container__content').innerText;
-  const bio = document.querySelector('.top-card__headline').innerText;
-  const followerCount = parseInt(document.querySelector('.follower-count').innerText.replace(/\D/g, ''));
-  const connectionCount = parseInt(document.querySelector('.connection-count').innerText.replace(/\D/g, ''));
+  // Extract name from the profile title section, default to empty string if not found
+  const name = document.querySelector('.top-card-layout__title')?.innerText || '';
+  
+  // Extract location from the profile subline section, default to empty string if not found
+  const location = document.querySelector('.top-card__subline-item')?.innerText || '';
+  
+  // Extract about information from the profile content section, default to empty string if not found
+  const about = document.querySelector('.core-section-container__content')?.innerText || '';
+  
+  // Extract bio from the profile headline section, default to empty string if not found
+  const bio = document.querySelector('.top-card__headline')?.innerText || '';
+  
+  // Extract follower count from the follower count section, default to 0 if not found
+  const followerCount = parseInt(document.querySelector('.follower-count')?.innerText.replace(/\D/g, '') || '0');
+  
+  // Extract connection count from the connection count section, default to 0 if not found
+  const connectionCount = parseInt(document.querySelector('.connection-count')?.innerText.replace(/\D/g, '') || '0');
 
+  // Return an object containing the extracted profile data
   return { name, location, about, bio, followerCount, connectionCount };
 };
-
-const postData = async (data) => {
-  const response = await fetch('http://localhost:3000/profiles', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  });
-  return response.json();
-};
-
-const data = extractProfileData();
-postData(data).then(response => {
-  console.log('Profile data posted:', response);
-  // Close the tab after posting
-  chrome.runtime.sendMessage({ action: 'closeTab' });
-});

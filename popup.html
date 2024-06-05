@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LinkedIn Data Scraper</title>
-  <link rel="stylesheet" type="text/css" href="popup.css">
+    <title>LinkedIn Automation</title>
+    <!-- Inline CSS styles for body and input elements -->
+    <style>
+        body {
+            width: 200px;
+            padding: 10px;
+        }
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <textarea id="links" placeholder="Enter LinkedIn profile links here, one per line"></textarea>
-    <button id="save">Save Links</button>
-    <button id="start">Start</button>
-  </div>
-  <script src="popup.js"></script>
+    <!-- Header for the popup -->
+    <h3>LinkedIn Automation</h3>
+    
+    <!-- Input fields for entering like and comment counts -->
+    <input type="number" id="likeCount" placeholder="Number of likes" min="0">
+    <input type="number" id="commentCount" placeholder="Number of comments" min="0">
+    
+    <!-- Button to start the automation process (disabled by default) -->
+    <button id="startButton" disabled>Start</button>
+    
+    <!-- Include JavaScript file for handling popup functionality -->
+    <script src="popup.js"></script>
 </body>
 </html>
